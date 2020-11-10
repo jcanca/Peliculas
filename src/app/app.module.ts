@@ -6,12 +6,16 @@ import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ListaPeliculasComponent } from './lista-peliculas/lista-peliculas.component';
 import { UsuarioComponent } from './usuario/usuario.component';
+import { PeliculasComponent } from './peliculas/peliculas.component';
+import { UsuaioComponent } from './usuaio/usuaio.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ListaPeliculasComponent,
-    UsuarioComponent
+    UsuarioComponent,
+    PeliculasComponent,
+    UsuaioComponent
   ],
   imports: [
     BrowserModule,
