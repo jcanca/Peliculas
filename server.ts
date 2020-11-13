@@ -9,12 +9,20 @@ import { APP_BASE_HREF } from '@angular/common';
 import { existsSync } from 'fs';
 
 import { api } from './api/api'
+import { enableProdMode } from '@angular/core';
+
+const bodyParser = require('body-parser');
+enableProdMode();
 
 // The Express app is exported so that it can be used by serverless Functions.
 export function app(): express.Express {
   const server = express();
   const distFolder = join(process.cwd(), 'dist/peliculas/browser');
   const indexHtml = existsSync(join(distFolder, 'index.original.html')) ? 'index.original.html' : 'index';
+  //const apiKey = '85c6a65f9a1497ee6e78a9e8df1cb09c';
+  const apiKey = process.env.TOKEN;
+  server.use(bodyParser.urlencoded({extended: true}));
+
 
   // Our Universal express-engine (found @ https://github.com/angular/universal/tree/master/modules/express-engine)
   server.engine('html', ngExpressEngine({

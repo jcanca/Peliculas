@@ -4,7 +4,7 @@ let methods: any = {};
 let searchInfo = [];
 methods.search = async (term: string, apiKey: string) => {
   let searchQuery = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=en-US&page=1&include_adult=false&query=${term}`;
-  let searchPromise = new Promise((resolve, reject) => {
+  let searchPromise = new Promise<void>((resolve, reject) => {
     request(searchQuery, {}, function(err, res, body) {
       let data = JSON.parse(body);
       searchInfo = data['results'];
